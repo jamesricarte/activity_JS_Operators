@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Activity 3: JS Operators</title>
+
+    <style>
+        * {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 50vh;
+        }
+
+        table {
+        border-collapse: collapse;
+        width: 80%;
+        margin-bottom: 20px;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        td {
+            font-size: 14px;
+            text-align: center;
+        }
+
+        th {
+            font-size: 15px;
+            text-align: center;
+            background-color: rgb(233, 233, 233);
+        }
+
+    </style>
+</head>
+<body>
+    <table>
+        <thead>
+            <tr>
+                <th>First Name</th>
+                <th>Middle Name</th>
+                <th>Last Name</th>
+                <th>Course and Year</th>
+                <th>Prelim</th>
+                <th>Midterm</th>
+                <th>Pre-finals</th>
+                <th>Finals</th>
+                <th>Average Grade</th>
+            </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+    <script>
+        const students = [
+            {
+                firstName: "James Mickel",
+                middleName: "Cao",
+                lastName: "Ricarte",
+                course: "BSIT",
+                year: 2,
+                prelimGrade: 88,
+                midtermGrade: 92,
+                preFinalGrade: 98,
+                finalGrade: 93
+            },
+            {
+                firstName: "Charles",
+                middleName: "Marfil",
+                lastName: "Alamares",
+                course: "BSIT",
+                year: 2,
+                prelimGrade: 77,
+                midtermGrade: 82,
+                preFinalGrade: 90,
+                finalGrade: 83
+            },
+            {
+                firstName: "Cedric",
+                middleName: "Dino",
+                lastName: "Naño",
+                course: "BSIT",
+                year: 2,
+                prelimGrade: 90,
+                midtermGrade: 91,
+                preFinalGrade: 86,
+                finalGrade: 89
+            }
+        ];
+
+        const studentsLength = students.length;
+
+        for (let i = 0; i < studentsLength; i++) {
+            students[i].average = (students[i].prelimGrade + students[i].midtermGrade + students[i].preFinalGrade + students[i].finalGrade) /4;
+        }
+
+        students.sort(function (a, b) {
+        return b.average - a.average;
+    });
+
+        for (let i = 0; i < studentsLength; i++) {
+            const tbody = "<tr><td>" + students[i].firstName + "</td><td>" + students[i].middleName + "</td><td>" + students[i].lastName + "</td><td>" + students[i].course + "-" + students[i].year + "</td><td>" + students[i].prelimGrade + "</td><td>" + students[i].midtermGrade + "</td><td>" + students[i].preFinalGrade + "</td><td>" + students[i].finalGrade + "</td><td><b>" + students[i].average.toFixed(0) + "</b></td></tr>"
+
+            document.querySelector('table tbody').innerHTML += tbody;
+        }
+
+
+
+    </script>
+</body>
+</html>
